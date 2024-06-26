@@ -3,7 +3,7 @@ import connectDB from './dbConnect';
 import  https from 'https'
 
 
-const PORT= process.env.port||4001 
+const PORT= process.env.Port||4001 
 const server=https.createServer(app);
 const  startServer=async()=>{
     await connectDB()
