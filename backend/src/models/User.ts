@@ -5,8 +5,6 @@ const userSchema= new Schema({
         type:String,
         required:true,
         unique:true,
-        minLength:8,
-        maxLength:12,
         trim:true
     },
     password:{
@@ -18,15 +16,11 @@ const userSchema= new Schema({
     firstName:{
         type:String,
         required:true,
-        minLength:8,
-        maxLength:12,
         trim:true    
     },
     secondName:{
         type:String,
         required:true,
-        minLength:8,
-        maxLength:12,
         trim:true
     }
 })

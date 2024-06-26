@@ -47,6 +47,22 @@ export const signInController=async function(req:Request,res:Response):Promise<R
         })
 }
 
+export const searchController= async function(req:Request ,res:Response){
+        const filter=req.params.filter
+        const users=await User.find(
+            {
+                $or:[{
+                    firstName:{
+                        "$regex": filter
+                    },
+                    lastName:{
+                        "$regex": filter
+                    }
+                }]
+            }
+        )
+        return res.status(200).json(users)
+}
 
 // Internal Functions
 
