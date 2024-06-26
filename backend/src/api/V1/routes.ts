@@ -1,10 +1,10 @@
 import express from 'express'
-import authRouter from '../../routers/authRouter'
+import accountRouter from '../../routers/accountRouter'
 import userRouter from '../../routers/userRouter'
 
 const mainRouter=express.Router()
 
-mainRouter.use('/auth',authRouter)
+mainRouter.use('/account',accountRouter)
 mainRouter.use('/user',userRouter)
 
 

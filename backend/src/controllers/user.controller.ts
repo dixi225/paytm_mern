@@ -3,7 +3,7 @@ import User from '../models/User';
 import  bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { signUpBody, sigInBody } from '../utills/validations';
-
+import Bank from '../models/bank.model';
 
 
 export const signUpController=async function(req:Request,res:Response):Promise<Response>{
@@ -18,6 +18,11 @@ export const signUpController=async function(req:Request,res:Response):Promise<R
         
         const hashedPassword=await bcrypt.hash(req.body.password,10)
             
+        await Bank.create({
+            userId:req.body._id,
+            balance: 1 + Math.random() * 10000
+        })
+
         const user=await User.create({
             userName:req.body.userName,
             firstName:req.body.firstName,
@@ -48,7 +53,7 @@ export const signInController=async function(req:Request,res:Response):Promise<R
 }
 
 export const searchController= async function(req:Request ,res:Response){
-        const filter=req.params.filter
+        const filter=req.params.filter || ""
         const users=await User.find(
             {
                 $or:[{
