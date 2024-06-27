@@ -10,15 +10,14 @@ const userSchema= new Schema({
     password:{
         type:String,
         required:true,
-        minLength:8,
-        maxLength:12,
+ 
     },
     firstName:{
         type:String,
         required:true,
         trim:true    
     },
-    secondName:{
+    lastName:{
         type:String,
         required:true,
         trim:true

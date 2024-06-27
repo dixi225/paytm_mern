@@ -18,10 +18,7 @@ export const signUpController=async function(req:Request,res:Response):Promise<R
         
         const hashedPassword=await bcrypt.hash(req.body.password,10)
             
-        await Bank.create({
-            userId:req.body._id,
-            balance: 1 + Math.random() * 10000
-        })
+
 
         const user=await User.create({
             userName:req.body.userName,
